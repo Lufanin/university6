@@ -1,8 +1,8 @@
 class Horse:
     def __init__(self):
-        super().__init__()
         self.x_distance = 0
         self.sound = 'Frrr'
+        super().__init__()  # здесь мы передаем наследование другому родительскому классу 
 
     def run(self, dx):
         self.x_distance += dx
@@ -18,21 +18,15 @@ class Eagle:
 
 
 class Pegasus(Horse, Eagle):
-    def __init__(self, dx = 0, dy = 0, sound = ""):
-        super().__init__()
-        # super().run(dx)
-        self.fly(dy)
-        self.sound = sound
-
     def move(self, dx, dy):
-        self.run(dx)
-        self.fly(dy)
+        self.run(dx)  # вызваем из родительских классов значения
+        self.fly(dy)  #
 
     def get_pos(self):
         return (self.x_distance, self.y_distance)
 
     def voice(self):
-        return self.sound
+        return self.sound # вызываем звук, как понимаю поблему, код просто не понимает откуда ему вызывать звук и ничего не возвращает
 
 
 # print(Pegasus.mro())
